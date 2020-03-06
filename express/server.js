@@ -328,7 +328,6 @@ async function get_notes(username, password, loginOnly){
 
 
 app.use('/.netlify/functions/server', serv);  // path must route to lambda
-//app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 app.use('/', (req, res) => res.send(Buffer.from(RESPONSE)));
 
 module.exports = app;
