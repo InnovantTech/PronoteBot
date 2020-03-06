@@ -24,7 +24,7 @@ serv.get('/t', (req, res) => {
 });
 
 serv.get('/', async function (req, res) {
-    body = req.body.toString('utf8');
+    body = JSON.parse(req).body.toString('utf8');
     console.log("test2");
     var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
     var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
