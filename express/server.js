@@ -10,6 +10,11 @@ var sanitizer = require('sanitizer');
 var aes256 = require('./aes256');
 
 const serv = express.Router();
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
 app.use(bodyParser.json());
 
 serv.get('/t', (req, res) => {
