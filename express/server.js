@@ -20,6 +20,7 @@ serv.get('/t', (req, res) => {
 
 serv.get('/', async function (req, res) {
     try {
+        console.log("test");
         body = req.body;
         var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
         var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
@@ -229,7 +230,7 @@ async function app2(username, password) {
             return "No Grades";
         }
     } catch (e) {
-        return e;
+        return "Unknown Error";
     }
 }
 
