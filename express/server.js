@@ -34,7 +34,7 @@ serv.post('/',  async function(req, res) {
     response.send(rtn);
     return false;
   }else{
-    var rtn = await app(username, password);
+    var rtn = await app2(username, password);
     console.log(rtn);
     response.send(rtn);
     return true;
@@ -126,7 +126,7 @@ async function isFirstTime(username, trim){
 }
 
 
-async function app(username, password){
+async function app2(username, password){
   var json = await get_notes(username, password, false);
   if(json == "WL"){
   return "Connexion Error";
