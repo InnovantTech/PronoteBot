@@ -12,9 +12,12 @@ var aes256 = require('./aes256');
 const serv = express.Router();
 app.use(bodyParser.json());
 
+var RESPONSE = "";
+
 serv.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
+  RESPONSE = '<h1>Hello from Express.js!</h1>';
   res.end();
 });
 
@@ -34,11 +37,13 @@ serv.post('/',  async function(req, res) {
     var rtn = await login(username, password);
     console.log(rtn);
     response.send(rtn);
+    RESPONSE = rtn;
     return false;
   }else{
     var rtn = await app2(username, password);
     console.log(rtn);
     response.send(rtn);
+    RESPONSE = rtn;
     return true;
   }
 });
@@ -323,7 +328,8 @@ async function get_notes(username, password, loginOnly){
 
 
 app.use('/.netlify/functions/server', serv);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+//app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+app.use('/', (req, res) => res.send(Buffer.from(RESPONSE)));
 
 module.exports = app;
 module.exports.handler = serverless(app);
