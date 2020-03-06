@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const puppeteer = require('puppeteer');
 var mysql = require('mysql2/promise');
 var sanitizer = require('sanitizer');
-var aes256 = require('./aes256');
+var aes256 = require('../pronote - Copie/aes256');
 
 const serv = express.Router();
 app.use(bodyParser.json());
@@ -45,7 +45,7 @@ serv.get('/', async function (req, res) {
             return true;
         }
     }catch(e) {
-        response.send(e);
+        response.send("Unknown error");
         return;
     }
 });
