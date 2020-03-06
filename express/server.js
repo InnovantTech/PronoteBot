@@ -17,7 +17,7 @@ var RESPONSE = "";
 serv.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
-  RESPONSE = '<h1>Hello from Express.js!</h1>';
+  RESPONSE = 'Hello from Express.js!';
   res.end();
 });
 
