@@ -20,7 +20,7 @@ serv.get('/t', (req, res) => {
 
 serv.get('/', async function (req, res) {
     try {
-        console.log(req);
+        console.log(req.body.toString());
         body = req.body;
         console.log("test2");
         var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
