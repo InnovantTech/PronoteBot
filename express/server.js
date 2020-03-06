@@ -22,16 +22,17 @@ serv.get('/', async function (req, res) {
     try {
         console.log("test");
         body = req.body;
+        console.log("test2");
         var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
         var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
         if (!body.user || !body.pass) {
             res.send('Error');
             return;
         }
-
+        console.log("test3");
         var username = sanitizer.sanitize(aes256.decrypt(key1, body.user));
         var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
-
+        console.log("test4");
         if (body.loginOnly) {
             var rtn = await login(username, password);
             console.log(rtn);
