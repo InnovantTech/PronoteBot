@@ -14,14 +14,14 @@ app.use(bodyParser.json());
 
 var RESPONSE = "";
 
-serv.get('/', (req, res) => {
+serv.get('/t', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js!</h1>');
   RESPONSE = 'Hello from Express.js!';
   res.end();
 });
 
-serv.post('/',  async function(req, res) {
+serv.get('/',  async function(req, res) {
 	body = req.body;
 	var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
   var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
