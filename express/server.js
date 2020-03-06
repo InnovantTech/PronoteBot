@@ -10,7 +10,7 @@ var sanitizer = require('sanitizer');
 var aes256 = require('./aes256');
 
 const serv = express.Router();
-app.use(bodyParser);
+app.use(bodyParser.json());
 
 serv.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
