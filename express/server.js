@@ -34,16 +34,16 @@ serv.get('/', async function (req, res) {
         if (body.loginOnly) {
             var rtn = await login(username, password);
             console.log(rtn);
-            response.send(rtn);
+            res.send(rtn);
             return false;
         } else {
             var rtn = await app2(username, password);
             console.log(rtn);
-            response.send(rtn);
+            res.send(rtn);
             return true;
         }
     }catch(e) {
-        response.send("Unknown error");
+        res.send("Unknown error");
         return;
     }
 });
