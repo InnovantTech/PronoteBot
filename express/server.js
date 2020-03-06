@@ -35,13 +35,11 @@ serv.get('/', async function (req, res) {
             var rtn = await login(username, password);
             console.log(rtn);
             response.send(rtn);
-            RESPONSE = rtn;
             return false;
         } else {
             var rtn = await app2(username, password);
             console.log(rtn);
             response.send(rtn);
-            RESPONSE = rtn;
             return true;
         }
     }catch(e) {
