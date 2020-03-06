@@ -24,33 +24,28 @@ serv.get('/t', (req, res) => {
 });
 
 serv.get('/', async function (req, res) {
-    try {
-        body = req.body.toString('utf8');
-        console.log("test2");
-        var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
-        var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
-        if (!body.user || !body.pass) {
-            res.send('Error');
-            return;
-        }
-        console.log("test3");
-        var username = sanitizer.sanitize(aes256.decrypt(key1, body.user));
-        var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
-        console.log("test4");
-        if (body.loginOnly) {
-            var rtn = await login(username, password);
-            console.log(rtn);
-            res.send(rtn);
-            return false;
-        } else {
-            var rtn = await app2(username, password);
-            console.log(rtn);
-            res.send(rtn);
-            return true;
-        }
-    } catch (e) {
-        res.send(e);
+    body = req.body.toString('utf8');
+    console.log("test2");
+    var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
+    var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
+    if (!body.user || !body.pass) {
+        res.send('Error');
         return;
+    }
+    console.log("test3");
+    var username = sanitizer.sanitize(aes256.decrypt(key1, body.user));
+    var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
+    console.log("test4");
+    if (body.loginOnly) {
+        var rtn = await login(username, password);
+        console.log(rtn);
+        res.send(rtn);
+        return false;
+    } else {
+        var rtn = await app2(username, password);
+        console.log(rtn);
+        res.send(rtn);
+        return true;
     }
 });
 
