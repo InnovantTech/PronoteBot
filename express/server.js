@@ -11,16 +11,14 @@ var aes256 = require('./../aes256');
 
 const serv = express.Router();
 
-app.configure(function(){
-    app.use(express.bodyParser());
-    
-    app.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    
-    app.use(bodyParser.json());
-    app.use(app.router);
-});
+app.use(express.bodyParser());
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+app.use(app.router);
 
 serv.get('/t', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
