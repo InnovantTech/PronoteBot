@@ -13,13 +13,13 @@ const serv = express.Router();
 
 app.configure(function(){
     app.use(express.bodyParser());
-    app.use(app.router);
-
-    app.use(express.urlencoded({
+    
+    app.use(bodyParser.urlencoded({
         extended: true
     }));
     
-    app.use(express.json());
+    app.use(bodyParser.json());
+    app.use(app.router);
 });
 
 serv.get('/t', (req, res) => {
