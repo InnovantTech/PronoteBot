@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
-app.use(app.router);
 
 serv.get('/t', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
