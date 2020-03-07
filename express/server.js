@@ -11,11 +11,11 @@ var aes256 = require('./aes256');
 
 const serv = express;
 
-app.use(bodyParser.urlencoded({
+app.use(express.urlencoded({
     extended: true
 }));
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 serv.get('/t', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
