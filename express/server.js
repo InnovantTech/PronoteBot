@@ -11,11 +11,16 @@ var aes256 = require('./../aes256');
 
 const serv = express.Router();
 
-app.use(express.urlencoded({
-    extended: true
-}));
+app.configure(function(){
+    app.use(express.bodyParser());
+    app.use(app.router);
 
-app.use(express.json());
+    app.use(express.urlencoded({
+        extended: true
+    }));
+    
+    app.use(express.json());
+});
 
 serv.get('/t', (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -25,7 +30,7 @@ serv.get('/t', (req, res) => {
 
 serv.get('/', async function (req, res) {
     console.log(req);
-    body = req.body.toString('utf8');
+    body = req.body;
     console.log("test2");
     var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
     var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
