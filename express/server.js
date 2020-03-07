@@ -11,8 +11,6 @@ var aes256 = require('./../aes256');
 
 const serv = express.Router();
 
-app.use(bodyParser);
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -26,20 +24,26 @@ serv.get('/t', (req, res) => {
 });
 
 serv.get('/', async function (req, res) {
-    console.log(req);
-    body = req.body;
-    console.log("test2");
-    var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
-    var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
-    if (!body.user || !body.pass) {
-        res.send('Error');
-        return;
-    }
-    console.log("test3");
-    var username = sanitizer.sanitize(aes256.decrypt(key1, body.user));
-    var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
-    console.log("test4");
-    if (body.loginOnly) {
+    // console.log(req);
+    // body = req.body;
+    // console.log("test2");
+    // var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
+    // var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
+    // if (!body.user || !body.pass) {
+    //     res.send('Error');
+    //     return;
+    // }
+    // console.log("test3");
+    // var username = sanitizer.sanitize(aes256.decrypt(key1, body.user));
+    // var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
+    // console.log("test4");
+    // if (body.loginOnly) {
+    
+    var l = true;
+    var username = "noe.landre";
+    var password = "Minecraft1345";
+
+    if(l == true){
         var rtn = await login(username, password);
         console.log(rtn);
         res.send(rtn);
