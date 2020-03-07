@@ -9,7 +9,7 @@ var mysql = require('mysql2/promise');
 var sanitizer = require('sanitizer');
 var aes256 = require('./aes256');
 
-const serv = express;
+const serv = express.Router();
 
 app.use(express.urlencoded({
     extended: true
