@@ -11,7 +11,7 @@ var aes256 = require('./../aes256');
 
 const serv = express.Router();
 
-app.use(express.bodyParser());
+app.use(bodyParser);
 
 app.use(bodyParser.urlencoded({
     extended: true
