@@ -3,7 +3,8 @@ const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('chrome-aws-lambda');
 var mysql = require('mysql2/promise');
 var sanitizer = require('sanitizer');
 var aes256 = require('./../aes256');
@@ -268,7 +269,11 @@ async function login(username, password) {
 async function get_notes(username, password, loginOnly) {
     try {
         var value_to_return;
-        const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await chromium.puppeteer.launch({
+             executablePath: await chromium.executablePath, 
+             headless: true, 
+             args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+        });
         const page = (await browser.pages())[0];
 
         await page.setDefaultNavigationTimeout(0);
