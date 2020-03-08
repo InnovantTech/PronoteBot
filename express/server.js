@@ -32,7 +32,7 @@ serv.get('/status', (req, res) => {
 });
 
 
-serv.get('/', async function (req, res) {
+serv.post('/', async function (req, res) {
     var date = new Date;
     var minutes = date.getMinutes();
     var hour = date.getHours();
