@@ -348,7 +348,7 @@ async function get_notes(username, password, loginOnly) {
         // await page.evaluate(()=>document.querySelector('[href="https://cas.monbureaunumerique.fr/saml/Logout?service=https%3A%2F%2Flyc-chrestien-de-troyes.monbureaunumerique.fr%2Flogout"]').click());
         await browser.close();
         return value_to_return;
-    } catch (e) {
+    } catch (error) {
         return "Puppeteer Error:" + error;
     }
 }
