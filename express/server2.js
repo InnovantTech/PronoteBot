@@ -215,14 +215,13 @@ const get_notes = new Promise( async function (resolve, reject) {
 });
 
 const login = new Promise(async function (resolve, reject) {
-    console.log("test");
     ONLY_LOGIN = true;
     get_notes.then(function (isGoodLoginInfo) {
         console.log(isGoodLoginInfo);
         if (isGoodLoginInfo == true) {
             resolve("Success");
         } else {
-            resolve("Error");
+            resolve(isGoodLoginInfo);
         }
     });
 });
