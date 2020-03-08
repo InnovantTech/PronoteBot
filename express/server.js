@@ -1,6 +1,5 @@
 'use strict';
 const express = require('express');
-const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
@@ -8,6 +7,8 @@ const puppeteer = require('puppeteer');
 var mysql = require('mysql2/promise');
 var sanitizer = require('sanitizer');
 var aes256 = require('./../aes256');
+
+const PORT = 5555;
 
 const serv = express.Router();
 
@@ -17,18 +18,30 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-serv.get('/t', (req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write('<h1>Hello from Express.js!</h1>');
-    res.end();
+serv.get('/', async function (req, res) {
+    res.json({
+        message: 'Express TEST',
+    });
 });
 
+serv.get('/status', (req, res) => {
+    res.json({
+        status: 'ok',
+        statusCode: 200,
+    })
+});
+
+
 serv.get('/', async function (req, res) {
-    // console.log(req);
+    var date = new Date;
+    var minutes = date.getMinutes();
+    var hour = date.getHours();
+
+    console.log('['+ hour +':'+ minutes + '] '+'Body: ' + req.body);
     // body = req.body;
     // console.log("test2");
     // var key1 = '%%%InnovanTech%%%hfuhfzeuhehufzeifHUZIUIUAZEGHDRuazsjdczhfzejifjdibhufihezioxdjfusbutfdzae1454rt56aert4aert4aez4rta6traeaertaer%%%InnovanTech%%%';
-    // var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
+    var key2 = '%%%InnovanTech%%%DZUYGDZYBADJAZZhuiaheajpodkadygufhqsdofjqsdiçfuhjeziu56894518798456489451527845641897edrfjuezfutyzadfbshjfvuyq%%%InnovanTech%%%';
     // if (!body.user || !body.pass) {
     //     res.send('Error');
     //     return;
@@ -38,12 +51,12 @@ serv.get('/', async function (req, res) {
     // var password = sanitizer.sanitize(aes256.decrypt(key2, body.pass));
     // console.log("test4");
     // if (body.loginOnly) {
-    
+
     var l = true;
     var username = "noe.landre";
-    var password = "Minecraft1345";
+    var password = sanitizer.sanitize(aes256.decrypt(key2, "VjuwsYgE385FSiwNgWfXPg=="));
 
-    if(l == true){
+    if (l == true) {
         var rtn = await login(username, password);
         console.log(rtn);
         res.send(rtn);
@@ -55,6 +68,8 @@ serv.get('/', async function (req, res) {
         return true;
     }
 });
+
+serv.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`));
 
 const pool = mysql.createPool({
     host: 'localhost',
