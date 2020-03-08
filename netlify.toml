@@ -1,3 +1,3 @@
 [build]
-  command = "npm install && npm run build"
+  command = "yarn install && npm install && npm install puppeteer && npm run build"
   functions = "functions"
