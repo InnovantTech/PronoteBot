@@ -269,7 +269,7 @@ async function login(username, password) {
 async function get_notes(username, password, loginOnly) {
     try {
         var value_to_return;
-        const browser = await chromium.puppeteer.launch({
+        const browser = await puppeteer.launch({
              executablePath: await chromium.executablePath, 
              args: chromium.args,
              headless: chromium.headless,
