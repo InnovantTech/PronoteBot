@@ -22,15 +22,15 @@ serv.get('/', async function (req, res) {
     })
 });
 
+app.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`));
+
 const promise = new Promise(function(resolve, reject) {
     setTimeout(function() {
       resolve('foo');
     }, 3000);
 });
 
-app.use('/.netlify/functions/server', serv);
-
-app.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`));
+app.use('/.netlify/functions/server2', serv);
 
 module.exports = serv;
 module.exports.handler = serverless(app);
