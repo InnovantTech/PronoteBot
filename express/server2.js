@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 var mysql = require('mysql2/promise');
 var sanitizer = require('sanitizer');
 var aes256 = require('./../aes256');
-
+const PORT = 5555;
 const serv = express();
 
 app.use(bodyParser.urlencoded({
@@ -29,6 +29,8 @@ const promise = new Promise(function(resolve, reject) {
 });
 
 app.use('/.netlify/functions/server', serv);
+
+app.listen(PORT, () => console.log(`> Ready on http://localhost:${PORT}`));
 
 module.exports = serv;
 module.exports.handler = serverless(app);
