@@ -1,2 +1,2 @@
 'use strict';
-const app = require('./express/server2');
+const app = require('./express/server');
