@@ -271,8 +271,8 @@ async function get_notes(username, password, loginOnly) {
         var value_to_return;
         const browser = await chromium.puppeteer.launch({
              executablePath: await chromium.executablePath, 
-             headless: true, 
-             args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+             args: chromium.args,
+             headless: chromium.headless,
         });
         const page = (await browser.pages())[0];
 
