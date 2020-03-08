@@ -261,7 +261,7 @@ async function login(username, password) {
     if (isGoodLoginInfo == true) {
         return "Success";
     } else {
-        return "Error";
+        return isGoodLoginInfo;
     }
 }
 
@@ -349,7 +349,7 @@ async function get_notes(username, password, loginOnly) {
         await browser.close();
         return value_to_return;
     } catch (e) {
-        return e;
+        return "Puppeteer Error:" + error;
     }
 }
 
